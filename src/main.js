@@ -135,6 +135,9 @@ makePosterBtn.addEventListener('click', makePosterHandler)
 savePosterBtn.addEventListener('click', savePoster)
 savedPosterGrid.addEventListener('dblclick', deleteSavedPoster)
 showRandomBtn.addEventListener('click', initialRandomPoster)
+mainPosterImg.addEventListener('click', changeImage)
+posterTitle.addEventListener('click', changeTitle)
+posterQuote.addEventListener('click', changeQuote)
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
@@ -236,4 +239,28 @@ function deleteSavedPoster(e) {
   var posterToDelete = e.target.closest('.mini-poster')
   savedPosters = savedPosters.filter(poster => poster.id != posterToDelete.dataset.id)
   displaySavedPoster()
+}
+
+function changeImage() {
+  var imgSrc = images[getRandomIndex(images)]
+  var title = currentPoster.title
+  var quote = currentPoster.quote
+  currentPoster = new Poster(imgSrc, title, quote)
+  setPoster()
+}
+
+function changeTitle() {
+  var imgSrc = currentPoster.imageURL
+  var title = titles[getRandomIndex(titles)]
+  var quote = currentPoster.quote
+  currentPoster = new Poster(imgSrc, title, quote)
+  setPoster()
+}
+
+function changeQuote() {
+  var imgSrc = currentPoster.imageURL
+  var title = currentPoster.title
+  var quote = quotes[getRandomIndex(quotes)]
+  currentPoster = new Poster(imgSrc, title, quote)
+  setPoster()
 }
