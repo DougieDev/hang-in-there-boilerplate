@@ -1,4 +1,3 @@
-// query selector variables go here 👇
 var mainPosterImg = document.querySelector('.poster-img')
 var posterTitle = document.querySelector('.poster-title')
 var posterQuote = document.querySelector('.poster-quote')
@@ -16,8 +15,6 @@ var makePosterBtn = document.querySelector('.make-poster')
 var savePosterBtn = document.querySelector('.save-poster')
 var savedPosterGrid = document.querySelector('.saved-posters-grid')
 var showRandomBtn = document.querySelector('.show-random')
-
-// we've provided you with some data to work with 👇
 
 var images = [
   "./assets/bees.jpg",
@@ -39,6 +36,7 @@ var images = [
   "./assets/tiger.jpg",
   "./assets/turtle.jpg"
 ];
+
 var titles = [
   "determination",
   "success",
@@ -76,6 +74,7 @@ var titles = [
   "understanding",
   "wisdom"
 ];
+
 var quotes = [
   "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
   "You are braver than you believe, stronger than you seem and smarter than you think.",
@@ -116,6 +115,7 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
+
 var savedPosters = [
   makePoster(
     "https://i.giphy.com/media/5LU6ZcEGBbhVS/giphy.gif",
@@ -123,9 +123,9 @@ var savedPosters = [
     "Keep a joyful heart!"
   )
 ];
+
 var currentPoster;
 
-// event listeners go here 👇
 window.addEventListener('load', initialRandomPoster)
 showFormBtn.addEventListener('click', displayPosterForm)
 showSaved.addEventListener('click', displaySavedPosterPage)
@@ -135,9 +135,6 @@ makePosterBtn.addEventListener('click', makePosterHandler)
 savePosterBtn.addEventListener('click', savePoster)
 savedPosterGrid.addEventListener('dblclick', deleteSavedPoster)
 showRandomBtn.addEventListener('click', initialRandomPoster)
-
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
 
 function initialRandomPoster() {
   var imgSrc = images[getRandomIndex(images)]
