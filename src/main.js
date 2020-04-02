@@ -139,44 +139,39 @@ mainPosterImg.addEventListener('click', changeImage)
 posterTitle.addEventListener('click', changeTitle)
 posterQuote.addEventListener('click', changeQuote)
 
-function initialRandomPoster() {
+
+function changeImage() {
   var imgSrc = images[getRandomIndex(images)]
-  var title = titles[getRandomIndex(titles)]
+  var title = currentPoster.title
+  var quote = currentPoster.quote
+  currentPoster = new Poster(imgSrc, title, quote)
+  setPoster()
+}
+
+function changeQuote() {
+  var imgSrc = currentPoster.imageURL
+  var title = currentPoster.title
   var quote = quotes[getRandomIndex(quotes)]
   currentPoster = new Poster(imgSrc, title, quote)
   setPoster()
 }
 
-function setPoster() {
-  mainPosterImg.src = currentPoster.imageURL
-  posterTitle.innerHTML = currentPoster.title
-  posterQuote.innerHTML = currentPoster.quote
+function changeTitle() {
+  var imgSrc = currentPoster.imageURL
+  var title = titles[getRandomIndex(titles)]
+  var quote = currentPoster.quote
+  currentPoster = new Poster(imgSrc, title, quote)
+  setPoster()
 }
 
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
-
-function displayPosterForm() {
-  mainPoster.classList.add('hidden')
-  posterForm.classList.remove('hidden')
-}
-
-function displaySavedPosterPage() {
-  mainPoster.classList.add('hidden')
-  savedPosterPage.classList.remove('hidden')
-  displaySavedPoster()
-}
-
-function returnToMain() {
-  savedPosterPage.classList.add('hidden')
-  posterForm.classList.add('hidden')
-  mainPoster.classList.remove('hidden')
+function clearFormInputs() {
+	posterImgInput.value = ''
+	posterTitleInput.value = ''
+	posterQuoteInput.value = ''
 }
 
 function createAPoster(imgSrc, title, quote) {
-  var poster = new Poster(imgSrc, title, quote)
-  currentPoster = poster
+  currentPoster = new Poster(imgSrc, title, quote)
   images.push(imgSrc)
   titles.push(title)
   quotes.push(quote)
@@ -187,38 +182,15 @@ function createAPoster(imgSrc, title, quote) {
   clearFormInputs()
 }
 
-function clearFormInputs() {
-	posterImgInput.value = ''
-	posterTitleInput.value = ''
-	posterQuoteInput.value = ''
+function deleteSavedPoster(e) {
+  var posterToDelete = e.target.closest('.mini-poster')
+  savedPosters = savedPosters.filter(poster => poster.id != posterToDelete.dataset.id)
+  displaySavedPoster()
 }
 
-
-function makePosterHandler(e) {
-  var imgInput = posterImgInput.value
-  var titleInput = posterTitleInput.value
-  var quoteInput = posterQuoteInput.value
-  e.preventDefault()
-  createAPoster(imgInput, titleInput, quoteInput)
-}
-
-function savePoster() {
-  if (noDuplicatePoster()) {
-    savedPosters.push(currentPoster)
-  }
-}
-
-function noDuplicatePoster() {
-  for (var i = 0; i < savedPosters.length; i++) {
-    if (savedPosters[i].id === currentPoster.id) {
-      return false
-    }
-  }
-  return true
-}
-
-function makePoster(imgSrc, title, quote) {
-  return new Poster(imgSrc, title, quote)
+function displayPosterForm() {
+  mainPoster.classList.add('hidden')
+  posterForm.classList.remove('hidden')
 }
 
 function displaySavedPoster() {
@@ -232,32 +204,56 @@ function displaySavedPoster() {
   }
 }
 
-function deleteSavedPoster(e) {
-  var posterToDelete = e.target.closest('.mini-poster')
-  savedPosters = savedPosters.filter(poster => poster.id != posterToDelete.dataset.id)
+function displaySavedPosterPage() {
+  mainPoster.classList.add('hidden')
+  savedPosterPage.classList.remove('hidden')
   displaySavedPoster()
 }
 
-function changeImage() {
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function initialRandomPoster() {
   var imgSrc = images[getRandomIndex(images)]
-  var title = currentPoster.title
-  var quote = currentPoster.quote
-  currentPoster = new Poster(imgSrc, title, quote)
-  setPoster()
-}
-
-function changeTitle() {
-  var imgSrc = currentPoster.imageURL
   var title = titles[getRandomIndex(titles)]
-  var quote = currentPoster.quote
-  currentPoster = new Poster(imgSrc, title, quote)
-  setPoster()
-}
-
-function changeQuote() {
-  var imgSrc = currentPoster.imageURL
-  var title = currentPoster.title
   var quote = quotes[getRandomIndex(quotes)]
   currentPoster = new Poster(imgSrc, title, quote)
   setPoster()
+}
+
+function makePoster(imgSrc, title, quote) {
+  return new Poster(imgSrc, title, quote)
+}
+
+function makePosterHandler(e) {
+  e.preventDefault()
+  createAPoster(posterImgInput.value, posterTitleInput.value, posterQuoteInput.value)
+}
+
+function noDuplicatePoster() {
+  for (var i = 0; i < savedPosters.length; i++) {
+    if (savedPosters[i].id === currentPoster.id) {
+      return false
+    }
+  }
+  return true
+}
+
+function returnToMain() {
+  savedPosterPage.classList.add('hidden')
+  posterForm.classList.add('hidden')
+  mainPoster.classList.remove('hidden')
+}
+
+function savePoster() {
+  if (noDuplicatePoster()) {
+    savedPosters.push(currentPoster)
+  }
+}
+
+function setPoster() {
+  mainPosterImg.src = currentPoster.imageURL
+  posterTitle.innerHTML = currentPoster.title
+  posterQuote.innerHTML = currentPoster.quote
 }
