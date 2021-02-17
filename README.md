@@ -1,44 +1,42 @@
-# Hang In There
+# MASTERMIND
 
-  A tool for making motivational posters.
+  A guessing game that puts you, the "Codebreaker", in the hotseat trying to guess what 4-color combination the computer, the "Codemaker", has chosen.
 
 ### Contributors:
-  - Carlyle Douglas (GitHub: [DougieDev](https://github.com/DougieDev) )
-  - Charles Wefso (GitHub: [CWefso](https://github.com/cwefso))
+  - Gaelyn Cooper (GitHub: [Gaelyn](https://github.com/gaelyn))
+  - Carlyle Douglas (GitHub: [DougieDev](https://github.com/DougieDev))
+  
 
 ## Learning Goals
 
-  - Gain a better understanding of events.
-  - Become more familiar with the DOM.
+  - Learning how to make a terminal game with no visual elements until the game is actually functional.
+  - Diving deeper into Scope and making classes interact.
   - Develop skills in collaborative development.
-  - Gain more experience with query selectors.
 
 ## Project Overview
 
-  In this project we provided the functionality for a tool that will allow a user to create a motivational poster. The user can generate a random poster from a pre-provided list of images, titles, and quotes.
+  In this project we created a game that followed the style of the classic [MASTERMIND](https://en.wikipedia.org/wiki/Mastermind_(board_game)) codebreaking game. The codebreaker tries to guess the codemakers pattern, in both order and color, with hints given for incorrect guesses.
 
-![First Poster](https://user-images.githubusercontent.com/61127453/78163852-2950ac00-7406-11ea-93ac-942df449d683.png)
+![Game Initialization](https://i.imgur.com/plsLcEg.png)
+  The codebreaker tries to guess the codemakers pattern, in both order and color, with hints given for incorrect guesses.
 
-  The user can also create a custom poster by providing an image url, a title, and a quote.
+![Game Progress](https://i.ibb.co/R0NLgTc/Screen-Shot-2021-02-17-at-4-09-50-PM.png)
 
-![Poster Form](https://user-images.githubusercontent.com/61127453/78163898-35d50480-7406-11ea-81b1-fd492f245807.png)
+  The game keeps track of how many guesses you've taken and also prevents the codebreaker from providing answers that are too short or too long.
 
-  This new custom poster will be displayed on the main page.
+![Game & Error Handling](https://i.ibb.co/GpFvDfP/Screen-Shot-2021-02-17-at-4-17-34-PM.png)
 
-![Custom Poster](https://user-images.githubusercontent.com/61127453/78163928-3f5e6c80-7406-11ea-91bf-2297147d0685.png)
+  While the user can use the hints to determine the eventual winning choice, they can also input the character 'c' to be given the actual Codemakers code.
 
-  It is also possible to save a poster to a gallery by clicking on the 'Save Poster' button. If the poster already exists in the gallery, a duplicate poster will not be saved. Double-clicking on a poster in the gallery will delete it.
+![Cheater Cheater Pumpkin Eater](https://i.ibb.co/FXjz02T/Screen-Shot-2021-02-17-at-4-25-04-PM.png)
 
-![Poster Gallery](https://user-images.githubusercontent.com/61127453/78163945-46857a80-7406-11ea-8d46-c6dc0d1f1471.png)
+  When the user finally inputs the hidden code, they are presented with a message informing them of their win and how many turns it took them to get there. It also gives them the opportunity to play again, or quit the game.
 
-  As an added touch the user can click one of the three sections of the poster and change that part while leaving the rest of the poster the same. This means that you can click the image to select a new random image, while the title and quote remain as-is.
-
-![Change Poster Elements](https://user-images.githubusercontent.com/61127453/78163956-49806b00-7406-11ea-95db-afaf21758c6b.png)
+![Winner Winner, Chicken Dinner](https://i.ibb.co/s6B84Rn/Screen-Shot-2021-02-17-at-4-29-40-PM.png)
 
 ## Technologies Used
 
-  - JavaScript
-  - HTML/CSS
+  - Ruby
 
 ## Systems/Practices
 
